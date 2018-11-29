@@ -1,3 +1,5 @@
+" Install Vundle: git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" For Plugin 'morhetz/gruvbox' to your .vimrc and run :PluginInstall
 set number
 set shiftwidth=2
 
