@@ -1,5 +1,13 @@
 alias flyt='fly -t tutorial'
 alias cdrepo='cd /mnt/d/repos'
+
+if  ! pgrep ssh-agent; then
+  eval `ssh-agent -s`
+  ssh-add ~/.ssh/key-1
+  ssh-add ~/.ssh/key-2
+  ssh-add ~/.ssh/key-3
+ fi
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
