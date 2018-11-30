@@ -1,13 +1,3 @@
-alias flyt='fly -t tutorial'
-alias cdrepo='cd /mnt/d/repos'
-
-if  ! pgrep ssh-agent; then
-  eval `ssh-agent -s`
-  ssh-add ~/.ssh/key-1
-  ssh-add ~/.ssh/key-2
-  ssh-add ~/.ssh/key-3
- fi
-
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -17,6 +7,31 @@ case $- in
     *i*) ;;
       *) return;;
 esac
+
+alias cdrepo='cd /mnt/d/repos'
+alias cdr='cd ~/repos'
+alias gst='git status'
+alias gco='git commit'
+alias gdf='git diff'
+alias gpl='git pull'
+alias gph='git push'
+alias gap='git add -p'
+alias mybshr='vim ~/.bashrc'
+alias Smybshr='. ~/.bashrc'
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+echo Defined aliases:
+alias
+
+if  ! pgrep ssh-agent; then
+  Starting ssh-agent ...
+  eval `ssh-agent -s`
+ fi
+
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -97,37 +112,5 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
-
 GIT_PROMPT_ONLY_IN_REPO=1
-# git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
 source ~/.bash-git-prompt/gitprompt.sh
-
-
