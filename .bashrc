@@ -27,10 +27,19 @@ alias l='ls -CF'
 echo Defined aliases:
 alias
 
+# start ssh-agent if not already loaded
 if  ! pgrep ssh-agent; then
   Starting ssh-agent ...
   eval `ssh-agent -s`
  fi
+
+#alter PATH
+PATH=$PATH:/opt
+
+#pip modules (user mode) e.g. aws-cli
+if [ -d ".local/bin" ]; then
+  PATH=$PATH:~/.local/bin
+fi
 
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -113,4 +122,5 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 GIT_PROMPT_ONLY_IN_REPO=1
-source ~/.bash-git-prompt/gitprompt.sh
+# https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
+source ~/bash-git-prompt/gitprompt.sh
