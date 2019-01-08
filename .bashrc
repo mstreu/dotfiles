@@ -8,14 +8,28 @@ case $- in
       *) return;;
 esac
 
+#shell
 alias cdrepo='cd /mnt/d/repos'
 alias cdr='cd ~/repos'
+
+#git
 alias gst='git status'
 alias gco='git commit'
 alias gdf='git diff'
 alias gpl='git pull'
 alias gph='git push'
 alias gap='git add -p'
+alias glo='git log --oneline'
+
+#docker-compose
+alias doco='docker-compose'
+
+#terraform
+alias tf='terraform'
+alias tfp='terraform plan'
+alias tfa='terraform apply'
+
+#bashrc
 alias mybshr='vim ~/.bashrc'
 alias Smybshr='. ~/.bashrc'
 
@@ -124,3 +138,5 @@ fi
 GIT_PROMPT_ONLY_IN_REPO=1
 # https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
 source ~/bash-git-prompt/gitprompt.sh
+
+. $HOME/.asdf/asdf.sh
