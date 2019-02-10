@@ -8,6 +8,13 @@ case $- in
       *) return;;
 esac
 
+#history
+PROMPT_COMMAND='history -a'
+shopt -s histappend
+HISTFILESIZE=1000000
+HISTSIZE=1000000
+HISTTIMEFORMAT='%F %T '
+
 #shell
 alias cdrepo='cd /mnt/d/repos'
 alias cdr='cd ~/repos'
