@@ -45,8 +45,25 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-echo Defined aliases:
-alias
+function spwanHelpMsg () {
+  echo "Show aliases with 'alias'"
+  echo "Show bash shortcuts with 'shrt'"
+  echo "Edit ~/.bashrc with 'mybshr'"
+  echo "Source ~/.bashrc with 'Smybshr'"
+}
+
+function shrt () {
+  echo Bash shortcuts:
+  echo CTRL+A – Go to the beginning of a line.
+  echo ALT+B – Move one character before the cursor.
+  echo ALT+C – Suspends the running command/process. ...
+  echo ALT+D – "Closes the empty Terminal (I.e it closes the Terminal when there is nothing typed). ..."
+  echo ALT+F – Move forward one character.
+  echo ALT+T – Swaps the last two words.
+  echo ALT+W – "Delete word under cursor (pos last letter of word)"
+  echo CTRL+K – "Deletets all till end of line from cursor"
+  echo CTRL+U – "Deletets all from start of line from cursor"
+}
 
 # start ssh-agent if not already loaded
 if  ! pgrep ssh-agent; then
@@ -131,8 +148,6 @@ esac
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
 
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
@@ -143,7 +158,9 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 GIT_PROMPT_ONLY_IN_REPO=1
+
 # https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
 source ~/bash-git-prompt/gitprompt.sh
 
 . $HOME/.asdf/asdf.sh
+spwanHelpMsg
