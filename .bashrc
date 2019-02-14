@@ -8,12 +8,23 @@ case $- in
       *) return;;
 esac
 
-#history
+###HISTORY###
 PROMPT_COMMAND='history -a'
 shopt -s histappend
 HISTFILESIZE=1000000
 HISTSIZE=1000000
 HISTTIMEFORMAT='%F %T '
+
+###ALIASES###
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+#bashrc
+alias mybshr='vim ~/.bashrc'
+alias Smybshr='. ~/.bashrc'
 
 #shell
 alias cdrepo='cd /mnt/d/repos'
@@ -26,7 +37,8 @@ alias gdf='git diff'
 alias gpl='git pull'
 alias gph='git push'
 alias gap='git add -p'
-alias glo='git log --oneline'
+alias glt='git log --since="midnight" --pretty=format:"%h%x09%an%x09%ad%x09%s"'
+alias glup='git log @{u}..HEAD --pretty=format:"%h%x09%an%x09%ad%x09%s"'
 
 #docker-compose
 alias doco='docker-compose'
@@ -36,15 +48,7 @@ alias tf='terraform'
 alias tfp='terraform plan'
 alias tfa='terraform apply'
 
-#bashrc
-alias mybshr='vim ~/.bashrc'
-alias Smybshr='. ~/.bashrc'
-
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
+###HELPER-FUNCTIONS###
 function spwanHelpMsg () {
   echo "Show aliases with 'alias'"
   echo "Show bash shortcuts with 'shrt'"
@@ -53,16 +57,16 @@ function spwanHelpMsg () {
 }
 
 function shrt () {
-  echo Bash shortcuts:
-  echo CTRL+A – Go to the beginning of a line.
-  echo ALT+B – Move one character before the cursor.
-  echo ALT+C – Suspends the running command/process. ...
-  echo ALT+D – "Closes the empty Terminal (I.e it closes the Terminal when there is nothing typed). ..."
-  echo ALT+F – Move forward one character.
-  echo ALT+T – Swaps the last two words.
-  echo ALT+W – "Delete word under cursor (pos last letter of word)"
-  echo CTRL+K – "Deletets all till end of line from cursor"
-  echo CTRL+U – "Deletets all from start of line from cursor"
+  echo "Bash shortcuts:"
+  echo "CTRL+A – Go to the beginning of a line."
+  echo "ALT+B – Move one character before the cursor."
+  echo "ALT+C – Suspends the running command/process. ..."
+  echo "ALT+D – Closes the empty Terminal (I.e it closes the Terminal when there is nothing typed). ..."
+  echo "ALT+F – Move forward one character."
+  echo "ALT+T – Swaps the last two words."
+  echo "ALT+W – Delete word under cursor (pos last letter of word)"
+  echo "CTRL+K – Deletets all till end of line from cursor"
+  echo "CTRL+U – Deletets all from start of line from cursor"
 }
 
 # start ssh-agent if not already loaded
@@ -73,12 +77,28 @@ if  ! pgrep ssh-agent; then
 
 #alter PATH
 PATH=$PATH:/opt
+PATH=$PATH:~/.asdf/bin:~/.asdf/shims
 
 #pip modules (user mode) e.g. aws-cli
-if [ -d ".local/bin" ]; then
+if [ -d "$HOME/.local/bin" ]; then
   PATH=$PATH:~/.local/bin
 fi
 
+### asdf version manager (e.g. for installing go)###
+# see https://github.com/asdf-vm/asdf
+if [ -d "$HOME/.asdf/bin" ]; then
+  #PATH=$PATH:~/.asdf/bin:~/.asdf/shims
+  $HOME/.asdf/asdf.sh
+
+  if [ -d "$HOME/.asdf/installs/golang" ]; then
+    go_version=1.11
+    PATH=$PATH:$HOME/.asdf/installs/golang/$go_version/packages/bin
+  fi
+  $HOME/.asdf/completions/asdf.bash
+fi
+export GOOS=linux
+
+###BASH HISTORY###
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -90,6 +110,9 @@ shopt -s histappend
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
+
+
+###MISC Stuff
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -117,6 +140,7 @@ esac
 # should be on the output of commands, not on the prompt
 #force_color_prompt=yes
 
+###BASH PROMPT####
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
 	# We have color support; assume it's compliant with Ecma-48
@@ -162,5 +186,7 @@ GIT_PROMPT_ONLY_IN_REPO=1
 # https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
 source ~/bash-git-prompt/gitprompt.sh
 
+
+###Call helper functions###
 . $HOME/.asdf/asdf.sh
 spwanHelpMsg
