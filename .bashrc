@@ -44,6 +44,8 @@ alias glo='git log --pretty=format:"%C(yellow)%h%Creset%x09%an%x09%C(cyan)%ad%Cr
 alias glot='glo --since="0am"'
 alias glup='git log @{u}..HEAD --pretty=format:"%h%x09%an%x09%ad%x09%s"'
 
+alias gck='git checkout'
+alias gst='git stash'
 
 ##docker-compose
 alias doco='docker-compose'
