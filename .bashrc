@@ -29,24 +29,26 @@ alias Smybshr='. ~/.bashrc'
 #shell
 alias ..='cd ..'
 
-#git
+##git
 alias gst='git status'
 alias gco='git commit'
+#commit
 alias gcom='gco -m'
+
 alias gdf='git diff'
 alias gpl='git pull'
 alias gph='git push'
 alias gap='git add -p'
-
+#log
 alias glo='git log --pretty=format:"%C(yellow)%h%Creset%x09%an%x09%C(cyan)%ad%Creset%x09%s"' 
 alias glot='glo --since="0am"'
 alias glup='git log @{u}..HEAD --pretty=format:"%h%x09%an%x09%ad%x09%s"'
 
 
-#docker-compose
+##docker-compose
 alias doco='docker-compose'
 
-#terraform
+##terraform
 alias tf='terraform'
 alias tfp='terraform plan'
 alias tfa='terraform apply'
