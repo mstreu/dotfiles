@@ -27,9 +27,7 @@ alias mybshr='vim ~/.bashrc'
 alias Smybshr='. ~/.bashrc'
 
 #shell
-alias cdrepo='cd /mnt/d/repos'
-alias cdr='cd ~/repos'
-
+alias ..='cd ..'
 #git
 alias gst='git status'
 alias gco='git commit'
@@ -50,6 +48,21 @@ alias doco='docker-compose'
 alias tf='terraform'
 alias tfp='terraform plan'
 alias tfa='terraform apply'
+
+
+###Jump to commonly used dir###
+function j () {
+  case $1 in 
+   'repo')
+     cd ~/repos;;
+   'mooc')
+     cd ~/repos/mooc;;
+   'dot')
+     cd ~/repos/dotfiles;;
+   'down')
+     cd ~/Downloads;;
+  esac
+}
 
 ###HELPER-FUNCTIONS###
 function spwanHelpMsg () {
