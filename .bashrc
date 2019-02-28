@@ -28,9 +28,11 @@ alias Smybshr='. ~/.bashrc'
 
 #shell
 alias ..='cd ..'
+
 #git
 alias gst='git status'
 alias gco='git commit'
+alias gcom='gco -m'
 alias gdf='git diff'
 alias gpl='git pull'
 alias gph='git push'
