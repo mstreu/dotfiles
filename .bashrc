@@ -37,13 +37,11 @@ alias gdf='git diff'
 alias gpl='git pull'
 alias gph='git push'
 alias gap='git add -p'
-<<<<<<< HEAD
+
 alias glo='git log --pretty=format:"%C(yellow)%h%Creset%x09%an%x09%C(cyan)%ad%Creset%x09%s"' 
 alias glot='glo --since="0am"'
-=======
-alias glt='git log --since="midnight" --pretty=format:"%h%x09%an%x09%ad%x09%s"'
 alias glup='git log @{u}..HEAD --pretty=format:"%h%x09%an%x09%ad%x09%s"'
->>>>>>> 1b98e3e92c09f5a5294388b2a352075143e87fda
+
 
 #docker-compose
 alias doco='docker-compose'
