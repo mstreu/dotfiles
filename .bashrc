@@ -59,7 +59,7 @@ alias tfa='terraform apply'
 ###Jump to commonly used dir###
 function j () {
   case $1 in 
-   'repo')
+   'repos')
      cd ~/repos;;
    'mooc')
      cd ~/repos/mooc;;
@@ -67,6 +67,8 @@ function j () {
      cd ~/repos/dotfiles;;
    'down')
      cd ~/Downloads;;
+   '')
+     echo "Vaild options: repos; mooc; dot; down";;
   esac
 }
 
