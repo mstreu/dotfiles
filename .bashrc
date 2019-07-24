@@ -115,7 +115,7 @@ if [ -d "$HOME/.asdf/bin" ]; then
   $HOME/.asdf/asdf.sh
 
   if [ -d "$HOME/.asdf/installs/golang" ]; then
-    go_version=1.11
+    go_version=1.12.4
     PATH=$PATH:$HOME/.asdf/installs/golang/$go_version/packages/bin
   fi
   $HOME/.asdf/completions/asdf.bash
