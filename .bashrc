@@ -214,3 +214,12 @@ source ~/bash-git-prompt/gitprompt.sh
 ###Call helper functions###
 . $HOME/.asdf/asdf.sh
 spwanHelpMsg
+
+if [[ $(hostname) -eq "plotze" ]]; then
+  echo " ,~~_"
+  echo " |/\ =_ _ ~"
+  echo "  _( )_( )\~~"
+  echo "   \,\  _|\ \~~~"
+  echo ""
+  echo ~~~ PLoETzE ~~~
+fi
