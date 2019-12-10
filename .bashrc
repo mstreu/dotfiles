@@ -101,22 +101,20 @@ if  ! pgrep ssh-agent; then
 
 #alter PATH
 PATH=$PATH:/opt
-PATH=$PATH:~/.asdf/bin:~/.asdf/shims
 
 #pip modules (user mode) e.g. aws-cli
 if [ -d "$HOME/.local/bin" ]; then
   PATH=$PATH:~/.local/bin
 fi
-
 ### asdf version manager (e.g. for installing go)###
 # see https://github.com/asdf-vm/asdf
 if [ -d "$HOME/.asdf/bin" ]; then
-  #PATH=$PATH:~/.asdf/bin:~/.asdf/shims
+  PATH=$PATH:~/.asdf/bin:~/.asdf/shims
   $HOME/.asdf/asdf.sh
 
   if [ -d "$HOME/.asdf/installs/golang" ]; then
-    go_version=1.12.4
-    PATH=$PATH:$HOME/.asdf/installs/golang/$go_version/packages/bin
+    go_version=$(asdf current golang | cut -d" " -f1)
+    PATH=$PATH:$HOME/.asdf/installs/golang/${go_version}/packages/bin
   fi
   $HOME/.asdf/completions/asdf.bash
 fi
@@ -223,3 +221,5 @@ if [[ $(hostname) -eq "plotze" ]]; then
   echo ""
   echo ~~~ PLoETzE ~~~
 fi
+#Fix curl not using systems ca-bundle by default
+export CURL_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
