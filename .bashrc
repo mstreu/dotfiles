@@ -213,7 +213,7 @@ source ~/bash-git-prompt/gitprompt.sh
 . $HOME/.asdf/asdf.sh
 spwanHelpMsg
 
-if [[ $(hostname) -eq "plotze" ]]; then
+if [[ $(hostname) ==  "plotze" ]]; then
   echo " ,~~_"
   echo " |/\ =_ _ ~"
   echo "  _( )_( )\~~"
@@ -221,5 +221,6 @@ if [[ $(hostname) -eq "plotze" ]]; then
   echo ""
   echo ~~~ PLoETzE ~~~
 fi
+
 #Fix curl not using systems ca-bundle by default
 export CURL_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
