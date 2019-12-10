@@ -9,7 +9,7 @@ case $- in
 esac
 
 ###HISTORY###
-PROMPT_COMMAND='history -a'
+PROMPT_COMMAND='history -a; history -n'
 shopt -s histappend
 HISTFILESIZE=1000000
 HISTSIZE=1000000
