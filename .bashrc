@@ -35,7 +35,10 @@ alias gco='git commit'
 #commit
 alias gcom='gco -m'
 
+#diff
 alias gdf='git diff'
+alias gds='git diff --stat'
+
 alias gpl='git pull'
 alias gph='git push'
 alias gap='git add -p'
